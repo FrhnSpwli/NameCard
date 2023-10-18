@@ -3,6 +3,7 @@ package com.example.namecard
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.BasicTextField
@@ -10,6 +11,8 @@ import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -34,6 +37,9 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun NameCard() {
+    val imageModifier = Modifier
+
+
     var fullName by remember { mutableStateOf(TextFieldValue("")) }
     var title by remember { mutableStateOf(TextFieldValue("")) }
     var phoneNumber by remember { mutableStateOf(TextFieldValue("")) }
@@ -45,6 +51,23 @@ fun NameCard() {
             .fillMaxSize()
             .padding(16.dp)
     ) {
+        Spacer(modifier = Modifier.weight(1f))
+
+        // Full Name and Title box
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(Color.White),
+        ) {
+            Column(
+                modifier = Modifier
+                    .padding(16.dp)
+            ) {
+                Image(painter = painterResource(id = R.drawable.sappe),
+                    contentDescription = null,
+                    modifier = imageModifier)
+            }
+        }
         Spacer(modifier = Modifier.weight(1f))
 
         // Full Name and Title box
